@@ -18,7 +18,8 @@ The migration process is rather simple. One just needs to open an issue here:
 
 In the issue tempalate there is space to fill the following information:
 
-**ParaId**
+### **ParaId**
+
 The Id of the parachain running in Rococo we want to migrate. This Id will be used to
 retrieve the following data:
 - `paras.heads(ParaId)` 
@@ -26,8 +27,40 @@ retrieve the following data:
 for this parachain.
 - `registrar.paras(ParaId)` from this struct the current manager account will be extrancted.
 
-**Manager Account**
+And will be the Id used to register the new parachain in Paseo. Avoiding innecessary changes in the parachain codebase.
+
+### **Manager Account**
+
 Ideally the same account than in Rococo will be used as a way of streamlining the process.
 
-**Proof of Ownership**
-As a way
+### **Proof of Ownership**
+
+As a way of proving that the creator of the issue has access to the manager account. This proof could be requested if the reviewers can't identify the user making the request.
+
+In order to generate such proof, use the `sign` subcommand that ships with substrate. A bianry that contains such subcommand is for isntance `staging-node-cli` in [`polkadot-sdk/substrate/bin/node`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/bin/node).
+Which can be built like this:
+```bash
+$ cargo build --release -p staging-node-cli
+```
+> Bear in mind that the resulting binary is called `substrate-node`
+
+Once the binary with this subcommand is ready the message to sing is `PASEO`. Which can be achieved running:
+```bash
+./substrate-node sign --message PASEO --suri <secret>
+```
+> Note that there are various options of providing the secret, pelase check the output of `sing --help`.
+
+The output of the execution shoul be something similar to 
+`0xbaa49812c9ddd70bb8514ba3841a25a8117c2c33cedde5229e4e1f058ce24f57281c45afb10c1dc094d2c3438cdc61884a9a814cd34358a41b017e3755734b8a` 
+
+_(In my tests I have been observing the output including a character `%` at the end of the signature, which is not part of it.)_
+
+---
+
+Once done you should see that your parachain is being registered and ready to start onboarding.
+
+The final step would be running the collators again pointing to the right chain specs.
+
+Paseo's raw spec can be found at:
+- [paseo-network/runtimes/chain-specs](https://github.com/paseo-network/runtimes/tree/main/chain-specs)
+- [polkadot-sdk/polkadot/node/service/chain-specs](https://github.com/paritytech/polkadot-sdk/tree/master/polkadot/node/service/chain-specs)
