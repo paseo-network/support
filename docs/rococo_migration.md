@@ -48,7 +48,7 @@ Once the binary with this subcommand is ready the message to sing is `PASEO`. Wh
 ```bash
 ./substrate-node sign --message PASEO --suri <secret>
 ```
-> Note that there are various options of providing the secret, pelase check the output of `sing --help`.
+> Note that there are various options of providing the secret, pelase check the output of `sign --help`.
 
 The output of the execution shoul be something similar to 
 `0xbaa49812c9ddd70bb8514ba3841a25a8117c2c33cedde5229e4e1f058ce24f57281c45afb10c1dc094d2c3438cdc61884a9a814cd34358a41b017e3755734b8a` 
@@ -59,7 +59,9 @@ _(In my tests I have been observing the output including a character `%` at the 
 
 Once done you should see that your parachain is being registered and ready to start onboarding.
 
-The final step would be running the collators again pointing to the right chain specs.
+Be mindful of your "old" parachain's database, you might want to back it up or you might choose to simply purge it. But this could be a good moment to address it.
+
+Now everything should be ready to run the collators again pointing now to the right chain specs.
 
 Paseo's raw spec can be found at:
 - [paseo-network/runtimes/chain-specs](https://github.com/paseo-network/runtimes/tree/main/chain-specs)
