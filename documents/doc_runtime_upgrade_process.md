@@ -45,6 +45,6 @@ This process covers all steps from the initial planning and scheduling of a runt
 Include common issues that might arise during the upgrade process and their solutions. Provide contact information for real-time assistance.
 
 ## Appendix
-A.1 Upgrade Proposal Template: Outline the structure for upgrade proposals.
-A.2 Communication Template: Sample messages for informing the community about the upgrade phases.
-A.3 Checklist for Validators: Pre and post-upgrade checklist for validators.
+- A.1 Upgrade Proposal Template: Outline the structure for upgrade proposals.
+- A.2 Communication Template: Sample messages for informing the community about the upgrade phases.
+- A.3 Checklist for Validators: Pre and post-upgrade checklist for validators.
