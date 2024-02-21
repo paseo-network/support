@@ -24,6 +24,7 @@ When creating an issue, please tag it appropriately using the labels provided:
 - **feature request**: For suggestions on new features or improvements to existing ones.
 - **question**: For general inquiries or support requests.
 - **documentation**: For issues related to documentation.
+- **core**: For support activities assigned to the Paseo Core Team.
 
 ## How to Contribute
 
