@@ -1,0 +1,62 @@
+name: Paseo Parachain Onboarding
+description: "Issue for onboarding parachains into Paseo"
+title: [Parachain Onboarding] ParaId: <your_paraId>
+labels: [onboard-para]
+assignees:
+  - al3mart
+  - hbulgarini
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## If you want to migrate your running parachain from Rococo please refer to https://github.com/paseo-network/support/docs/rococo_migration.md
+  - type: input
+    id: para_name
+    attributes:
+      label: Parachain Name
+      description: "The name of your Parachain"
+      placeholder: "Example: AssetHub"
+  - type: input
+    id: para_id
+    attributes:
+      label: ParaID
+      description: "The paraID that you ***compiled in your chainspec***." 
+      placeholder: "Example: 4000"
+    validations:
+      required: true
+  - type: input
+    id: manager_account
+    attributes:
+      label: Parachain Manager Account
+      description: "This account would be set as the manager for this parachain."
+      placeholder: "Example:5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY"
+    validations:
+      required: true
+  - type: textarea
+    id: genesis
+    attributes:
+      label: Upload your Genesis State - Do not submit a compressed file.
+      placeholder: Drag & drop or upload the genesis file, or provide a link to this file to download
+    validations:
+      required: true
+  - type: textarea
+    id: wasm
+    attributes:
+      label: Upload your Validation Code (genesis runtime Wasm) - Do not submit a compressed file.
+      placeholder: Drag & drop or upload the Wasm runtime file associated with your genesis
+    validations:
+      required: true
+  - type: markdown
+    id: apps_ui_pr
+    attributes:
+      label: Register your Paseo parachain details for `polkadot-js/apps`
+      value: |
+        So that users can identify what chain you are using, please submit a PR to <https://github.com/polkadot-js/apps/> to include your details on the UI
+
+        **Example PR: https://github.com/polkadot-js/apps/pull/7180/files**
+
+        You _may_ leave this as the default text below, but need to add the PR when it's in started or merged.
+  - type: markdown
+    attributes:
+      value: |
+        If you need support for your team related to this slot, please use this issue for further requests.
