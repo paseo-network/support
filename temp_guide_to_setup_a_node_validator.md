@@ -5,10 +5,25 @@ Welcome to the Paseo testnet! This guide will walk you through the process of se
 ## Prerequisites
 
 Before you begin, make sure you have the following:
+https://github.com/paseo-network/paseo-action-submission/blob/main/pas/Hardware_specs.md
 
-- A server with a recommended minimum of 8GB RAM, a quad-core CPU, and at least 200GB of free disk space.
-- The latest version of the Polkadot binary installed on your server. You can download it from [the official Polkadot repository](https://github.com/paritytech/polkadot-sdk/releases).
-- Basic knowledge of terminal/command-line interface.
+These hardware specs takes as a reference the Polkadot hardware specs listed [here](https://wiki.polkadot.network/docs/maintain-guides-how-to-validate-polkadot#requirements). The initial group supporting Paseo Network decided to set the 1/2 of the resources needed for Polkadot (except the storage which much less than 1TB is needed).
+
+Hardware specs details:
+- CPU
+  - x86-64 compatible;
+  - Intel Ice Lake, or newer (Xeon or Core series); AMD Zen3, or newer (EPYC or Ryzen);
+  - 2 physical cores @ 3.4GHz;
+  - Simultaneous multithreading disabled (Hyper-Threading on Intel, SMT on AMD);
+  - Prefer single-threaded performance over higher cores count. A comparison of single-threaded performance can be found here.
+- Storage
+  - An NVMe SSD of 200 GB (As it should be reasonably sized to deal with blockchain growth). An estimation of current chain snapshot sizes can be found here. In general, the latency is more important than the throughput.
+- Memory
+  - 16 GB DDR4 ECC.
+- System
+  - Linux Kernel 5.16 or newer.
+- Network
+  - The minimum symmetric networking speed is set to 500 Mbit/s (= 62.5 MB/s). This is required to support a large number of parachains and allow for proper congestion control in busy network situations
 
 ## 1. Download the Chain Specification
 
