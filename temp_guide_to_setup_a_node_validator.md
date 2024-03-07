@@ -7,7 +7,7 @@ Welcome to the Paseo testnet! This guide will walk you through the process of se
 Before you begin, make sure you have the following:
 
 - A server with a recommended minimum of 8GB RAM, a quad-core CPU, and at least 200GB of free disk space.
-- The latest version of the Polkadot binary installed on your server. You can download it from [the official Polkadot repository](https://github.com/paritytech/polkadot/releases).
+- The latest version of the Polkadot binary installed on your server. You can download it from [the official Polkadot repository](https://github.com/paritytech/polkadot-sdk/releases).
 - Basic knowledge of terminal/command-line interface.
 
 ## 1. Download the Chain Specification
