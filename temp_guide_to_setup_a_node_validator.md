@@ -57,7 +57,10 @@ Please follow the Polkadot Validator Guide for detailed instructions on secure v
 While the guide is for Polkadot, the principles and steps apply to Paseo as well. Just make sure to use the paseo.raw.json chain spec when prompted.
 
 ## 5. Monitoring and Maintenance
-Once your validator is set up, it's crucial to monitor its performance and keep it updated. Regularly check for updates to the Polkadot binary and apply them as needed. Also, monitor your node's logs for any errors or warnings.
+Once your validator is set up, it's crucial to monitor its performance and keep it updated. To be able to join our Telemetry server, please add this argument to the node deployment process
+```shell
+--telemetry-url 'wss://shard-tememetry-paseo.beryx.io/submit 1'
+```
 
 # Conclusion
 Congratulations! You have set up a node and are on your way to becoming a validator on the Paseo testnet. By participating as a validator, you're contributing to the network's security and operation.
