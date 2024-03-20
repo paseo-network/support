@@ -48,9 +48,7 @@ body:
     validations:
       required: true
   - type: markdown
-    id: apps_ui_pr
     attributes:
-      label: Register your Paseo parachain details for `polkadot-js/apps`
       value: |
         So that users can identify what chain you are using, please submit a PR to <https://github.com/polkadot-js/apps/> to include your details on the UI
 
