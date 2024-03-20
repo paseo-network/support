@@ -37,7 +37,7 @@ Ideally the same account than in Rococo will be used as a way of streamlining th
 
 As a way of proving that the creator of the issue has access to the manager account. This proof could be requested if the reviewers can't identify the user making the request.
 Note this can be done in various way, for instance, using polkadot.js/apps - https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-rpc.polkadot.io#/signing
-In order to generate such proof, use the `sign` subcommand that ships with substrate. A bianry that contains such subcommand is for isntance `staging-node-cli` in [`polkadot-sdk/substrate/bin/node`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/bin/node).
+Another way to generate such proof: use the `sign` subcommand that ships with substrate. A bianry that contains such subcommand is for isntance `staging-node-cli` in [`polkadot-sdk/substrate/bin/node`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/bin/node).
 Which can be built like this:
 ```bash
 $ cargo build --release -p staging-node-cli
