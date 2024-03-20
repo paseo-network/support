@@ -4,7 +4,8 @@ labels: [RocMigration]
 assignees:
   - al3mart
   - hbulgarini
-  - jleni 
+  - 
+educlerici-zondax  
 body:
 - type: markdown
     attributes:
