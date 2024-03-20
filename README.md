@@ -16,6 +16,13 @@ To report a bug, request a feature, or seek support:
 4. Fill out the template with all the necessary details. Be as specific as possible to help us understand and address your concern efficiently.
 5. Submit the issue.
 
+#### 🧳 Migrate your parachain from Rococo to Paseo
+
+If you are the maintainer of a parachain running on Rococo and you are looking 
+to keep your parachain running in Paseo, please go ahead and follow the migration guide: 
+
+- [Migrate parachain from Rococo to Paseo](docs/rococo_migration.md)
+
 ### Tagging Issues
 
 When creating an issue, please tag it appropriately using the labels provided:
