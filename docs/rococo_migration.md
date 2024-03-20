@@ -14,7 +14,7 @@ Once all your machines are not executing your parachain binaries, then it is saf
 
 The migration process is rather simple. One just needs to open an issue here:
 
-- [Migration Issue]()
+- [Migration Issue](https://github.com/paseo-network/support/issues/new/choose)
 
 In the issue tempalate there is space to fill the following information:
 
