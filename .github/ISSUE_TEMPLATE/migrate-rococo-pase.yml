@@ -6,27 +6,27 @@ assignees:
   - hbulgarini
   - educlerici-zondax  
 body:
-- type: markdown
+  - type: markdown
     attributes:
       value: |
         ### Your parachain collators need to be stopped before openning this issue!
-- type: input
-  id: roc_para_id
-  attributes:
-    label: Para Id in Rococo
-    description: "The Id of the parachain to be migrated from Rococo"
-    placeholder: "Example: 2000"
-  validations:
-    required: true
-- type: input
-  id: manager_account
-  attributes:
-    label: Parachain Manager Account
-    description: "Using the same account than in Rococo is recommended. It will be retrieved from Rococo if not provided here."
-    placeholder: "Example:5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY"
-  validations:
-    required: false
-- type: input
+  - type: input
+    id: roc_para_id
+    attributes:
+      label: Para Id in Rococo
+      description: "The Id of the parachain to be migrated from Rococo"
+      placeholder: "Example: 2000"
+    validations:
+      required: true
+  - type: input
+    id: manager_account
+    attributes:
+      label: Parachain Manager Account
+      description: "Using the same account than in Rococo is recommended. It will be retrieved from Rococo if not provided here."
+      placeholder: "Example:5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY"
+    validations:
+      required: false
+  - type: input
     id: poo
     attributes:
       label: Proof of Ownership
