@@ -1,4 +1,4 @@
-name: Paseo Parachain Onboarding
+name: "Paseo Parachain Onboarding"
 description: "Issue for onboarding parachains into Paseo"
 title: [Parachain Onboarding | Slot Request] ParaId: <your_paraId>
 labels: [onboard-para]
