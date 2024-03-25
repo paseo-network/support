@@ -59,3 +59,7 @@ body:
     attributes:
       value: |
         If you need support for your team related to this slot, please use this issue for further requests.
+  - type: markdown
+    attributes:
+      value: |
+        :warning: Paseo weights: Please be mindful that Paseo Network runs with a different hardware than Polkadot. We recommend re-benchmarking your parachain under the corresponding reference hardware (See [PAS-7-Hardware_specs.md]()https://github.com/paseo-network/paseo-action-submission/blob/main/pas/PAS-7-Hardware_specs.md) for avoiding PoV inconsistencies.
