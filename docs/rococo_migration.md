@@ -20,6 +20,7 @@ Now run the following command:
 Once that spec is ready it can be used to export the genesis wasm and state that will be used to register your parachain in Paseo.
 
 `$ ./parachain-binary export-genesis-state --chain <parachain-spec-for-paseo.json > parachain-genesis-head-for-paseo`
+
 `$ ./parachain-binary export-genesis-wasm --chain <parachain-spec-for-paseo.json > parachain-genesis-wasm-for-paseo>`
 
 > __Notice that if you plan to attach these files into a GitHub issue or comment, you might need to append a file formart to them. Just by renaming the file._
