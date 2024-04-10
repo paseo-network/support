@@ -19,6 +19,22 @@ body:
     validations:
       required: true
   - type: input
+    id: para_block_num
+    attributes:
+        label: Migrating from Parachain Block#:
+        description: "Parachain Block # the state is being migrated from."
+        placeholder: "123456"
+    validations:
+        required: true
+  - type: input
+    id: relay_block_num
+    attributes:
+        label: relay_block_num
+        description: "Rococo Block # in which the above Parachain Block # was included."
+        placeholder: "67891023"
+    validations:
+        required: true
+  - type: input
     id: manager_account
     attributes:
       label: Parachain Manager Account

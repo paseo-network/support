@@ -9,8 +9,22 @@ onboarding.
 
 ---
 
-The very first step before initiating the migration would be stopping all the collators.
-Once all your machines are not executing your parachain binaries, then it is safe to proceed.
+### Preparation
+
+The very first step before initiating the migration would be choosing a parachain block#.
+Let's use this block# to export the state of the running parachain and use that state for the new genesis in Paseo. 
+Now run the following command:
+
+`$ ./parachain-binary export-state [--chain <your-running-spec> --database <rocksdb/paritydb/auto>] <BLOCK# or BLOCK-HASH> > parachain-spec-for-paseo.json`
+
+Once that spec is ready it can be used to export the genesis wasm and state that will be used to register your parachain in Paseo.
+
+`$ ./parachain-binary export-genesis-state --chain <parachain-spec-for-paseo.json > parachain-genesis-head-for-paseo`
+`$ ./parachain-binary export-genesis-wasm --chain <parachain-spec-for-paseo.json > parachain-genesis-wasm-for-paseo>`
+
+> __Notice that if you plan to attach these files into a GitHub issue or comment, you might need to append a file formart to them. Just by renaming the file._
+
+## Migration: Rococo to Paseo
 
 The migration process is rather simple. One just needs to open an issue here:
 
@@ -29,13 +43,23 @@ for this parachain.
 
 And will be the Id used to register the new parachain in Paseo. Avoiding innecessary changes in the parachain codebase.
 
+**We will highly appreciate if you could attach the files generated in the preparation. :+1:**
+
+### **Migrating From Block#**
+
+This helps us locating the state that needs to be migrated from Rococo to Paseo.
+Useful information here is:
+- Parachain block# from which the state is going to be migrated.
+- Relay block# corresponding to the finalised Parachain block#.
+
 ### **Manager Account**
 
 Ideally the same account than in Rococo will be used as a way of streamlining the process.
+Otherwise any account you control in Paseo is fine.
 
-### **Proof of Ownership**
+### **Optional Proof of Ownership**
 
-As a way of proving that the creator of the issue has access to the manager account. This proof could be requested if the reviewers can't identify the user making the request.
+As a way of proving that the creator of the issue has access to the manager account registered in Rococo, if applicable. This proof could be requested if the reviewers can't identify the user opening the request.
 Note this can be done in various way, for instance, using polkadot.js/apps - https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-rpc.polkadot.io#/signing
 
 Another way to generate such proof: use the `sign` subcommand that ships with substrate. A bianry that contains such subcommand is for isntance `staging-node-cli` in [`polkadot-sdk/substrate/bin/node`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/bin/node).
