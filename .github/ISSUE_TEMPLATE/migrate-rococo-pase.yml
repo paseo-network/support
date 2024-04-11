@@ -22,7 +22,7 @@ body:
     id: para_block_num
     attributes:
         label: Migrating from Parachain Block#:
-        description: "Parachain Block # the state is being migrated from."
+        description: "Parachain Block # the state is being migrated from. A finalised block."
         placeholder: "123456"
     validations:
         required: true
