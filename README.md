@@ -16,7 +16,18 @@ To report a bug, request a feature, or seek support:
 4. Fill out the template with all the necessary details. Be as specific as possible to help us understand and address your concern efficiently.
 5. Submit the issue.
 
-#### 🧳 Migrate your parachain from Rococo to Paseo
+### 🧳 Migrate Parachain State and History Across Relaychains
+If you need to migrate the state and history of your parachain from one relaychain to another, we provide a comprehensive guide that covers this complex process. This guide is particularly useful for parachain maintainers who need to transfer their operations without losing historical data or state continuity.
+
+#### Key Steps Covered:
+
+- Disabling relaychain block number checks.
+- Exporting current state and moving to a new chainspec.
+- Managing node transitions and ensuring data integrity throughout the process.
+- For a detailed step-by-step process, please refer to our full migration guide: 
+    - [Migrate Parachain State and History Across Relaychains](https://hackmd.io/@4Zchucf_QeG8XyIumgx7Dg/rJ2pD_7XA)
+
+### 🧳 Migrate your parachain from Rococo to Paseo
 
 If you are the maintainer of a parachain running on Rococo and you are looking 
 to keep your parachain running in Paseo, please go ahead and follow the migration guide: 
