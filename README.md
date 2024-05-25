@@ -25,7 +25,7 @@ If you need to migrate the state and history of your parachain from one relaycha
 - Exporting current state and moving to a new chainspec.
 - Managing node transitions and ensuring data integrity throughout the process.
 - For a detailed step-by-step process, please refer to our full migration guide: 
-    - [Migrate Parachain State and History Across Relaychains](https://hackmd.io/@4Zchucf_QeG8XyIumgx7Dg/rJ2pD_7XA)
+    - [Migrate Parachain State and History Across Relaychains](https://github.com/paseo-network/support/blob/update-readme/docs/Migrate_parachain_state_across_relaychains.md)
 
 ### 🧳 Migrate your parachain from Rococo to Paseo
 
