@@ -9,10 +9,9 @@ Welcome to the Paseo Testnet onboarding guide for parachains. This document prov
 1. **Prerequisites**
 2. **Parachain Registration Process**
 3. **Setting Up Your Parachain**
-4. **Connecting Your Parachain to Paseo**
-5. **Monitoring and Maintenance**
-6. **FAQ**
-7. **Support and Resources**
+4. **Monitoring and Maintenance**
+5. **FAQ**
+6. **Support and Resources**
 
 ## 1. Prerequisites
 
@@ -33,29 +32,40 @@ To register your blockchain as a parachain on the Paseo Testnet:
 ### 2.2 Review and Approval
 - The Paseo team will review your submission. Approval is based on the readiness of your technology, the potential impact on the Paseo ecosystem, and the availability of parachain slots.
 ### 2.3 Slot Allocation
-- Request a slot directly by contacting the Paseo team. Detailed procedures for requesting a slot are provided upon contact.
+- While coretime is not yet live, feel free to request a slot directly by contacting the Paseo team. Detailed procedures for requesting a slot are provided upon contact. For more details, please refer to [PAS#9](https://github.com/paseo-network/paseo-action-submission/blob/main/pas/PAS-9-Onboard-paras-slots.md).
 
 ## 3. Setting Up Your Parachain
-- Configure your blockchain’s collator nodes according to the Paseo network specifications. This includes setting up network endpoints, consensus mechanisms, and synchronization settings.
-- Example on how to run the node, pointing to the [Paseo Spec](https://github.com/paseo-network/specs) for easy discoverability.
+- Configure your blockchain’s collator nodes so that they use the [Paseo Spec](https://github.com/paseo-network/runtimes/blob/main/chain-specs/paseo.raw.json). It already includes the relevant bootnodes.
+Your launch script might look similar to:
+```bash
+./target/release/parachain-template-node \
+--alice \
+--collator \
+--chain my_parachain_spec.json \
+-- \
+--chain paseo.raw.json \
+```
 
-## 4. Connecting Your Parachain to Paseo
-### 4.1 Connectivity
-- Establish a connection between your collators and the Paseo relay chain. This involves configuring network settings to ensure seamless communication between your parachain and Paseo.
-### 4.2 Testing and Validation
-- Conduct thorough testing to validate the integration. This includes testing transaction processing, block production, and inter-chain messaging.
+## 4. Monitoring and Maintenance
+### 4.1 Monitoring Tools
+- Implement monitoring tools to keep track of the parachain’s performance and stability. For instance, most of the nodes connected to Paseo network are visible at its [telemtry endpoint](https://telemetry.polkadot.io/#list/0x77afd6190f1554ad45fd0d31aee62aacc33c6db0ea801129acb813f913e0764f).
 
-## 5. Monitoring and Maintenance
-### 5.1 Monitoring Tools
-- Implement monitoring tools to keep track of the parachain’s performance and stability. Utilize the Paseo Testnet’s telemetry services for real-time monitoring.
-### 5.2 Updating and Upgrading
-- Regularly update your parachain software and runtime.
+### 4.2 Updating and Upgrading
 - Stay tuned for Team updates regarding upgrades.
+Any relevant upgrades happening on Paseo will be posted on [Paseo Announcements channel](https://matrix.to/#/#paseo-announcements:matrix.org).
 
-## 6. FAQ
+## 5. FAQ
 - WIP
 
-## 7. Support and Resources
+## 6. Support and Resources
 - **Technical Support:** 
+
+A vibrant community of developers can be reached out at https://substrate.stackexchange.com/
+
 - **Documentation:** 
+
+Some interesting resources for launching collators can be found at this devops guide chapter: [Deploying  a Parachain](https://paritytech.github.io/devops-guide/guides/parachain_deployment.html).
+
 - **Community:** 
+
+Join Paseo's public room at https://matrix.to/#/#paseo-testnet-support:parity.io or at Polkadot's discord server.
