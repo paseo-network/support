@@ -1,21 +1,26 @@
 # Migrate a parachain from Rococo to Paseo
 
-The migration process that is done in this guide is a hard spoon. Meaning that
-the current state and code from the running network will be taken and used as
-genesis for the parachain being registered in Paseo.
+This document presents two options for teams to migrate their running parachains to Paseo testnet:
 
-If this process is not of your interest, please continue with a usual parachain
-onboarding.
+1. [**Re-genesis**](#1-re-genesis): The state at a certain block# of your chain will be the genesis of the chain onboarded to Paseo. Block will start producing from #0.
+2. [**Migrate state and history**](#2-migrate-state-and-history): The migration will maintain the state as well the block history of the chain being migrated. It will stop producing blocks on one relay chain to produce them on Paseo testnet.
+
+
+_If you are not looking for migrating a parachain from any other relay chain, please continue with a usual parachain onboarding as described [here](https://github.com/paseo-network/paseo-action-submission/blob/main/pas/PAS-9-Onboard-paras-slots.md)._
 
 ---
 
-### Preparation
+## 1. Re-genesis
 
-The very first step before initiating the migration would be choosing a parachain block#.
-Let's use this block# to export the state of the running parachain and use that state for the new genesis in Paseo. 
-Now run the following command:
+### Pre-requisites
+
+Let's choose a block# to export the state of the running parachain and use that state for the new genesis in Paseo.
+The bock# to choose could be any, ideally some block close to the migration date, or one at some relevant event which state you want included in the new genesis.
+Now export the chain state with the following command:
 
 `$ ./parachain-binary export-state [--chain <your-running-spec> --database <rocksdb/paritydb/auto>] <BLOCK# or BLOCK-HASH> > parachain-spec-for-paseo.json`
+
+> This spec might include a value for the key `0x45323df7cc47150b3930e2666b0aa313a2bca190d36bd834cc73a38fc213ecbd`. Please, feel free to remove this one from the spec. It corresponds to the last relay block the parachain has seen. In case Paseo block is < than the value for this key this would lead to a runtime panic. Blocking your parachain from producing blocks.
 
 Once that spec is ready it can be used to export the genesis wasm and state that will be used to register your parachain in Paseo.
 
@@ -23,71 +28,74 @@ Once that spec is ready it can be used to export the genesis wasm and state that
 
 `$ ./parachain-binary export-genesis-wasm --chain <parachain-spec-for-paseo.json > parachain-genesis-wasm-for-paseo>`
 
-> __Notice that if you plan to attach these files into a GitHub issue or comment, you might need to append a file formart to them. Just by renaming the file._
 
-## Migration: Rococo to Paseo
+### Migration: Onboarding to Paseo
 
 The migration process is rather simple. One just needs to open an issue here:
 
-- [Migration Issue](https://github.com/paseo-network/support/issues/new/choose)
+- [Paseo Parachain Onboarding Issue](https://github.com/paseo-network/support/issues/new/choose)
 
 In the issue tempalate there is space to fill the following information:
 
 ### **ParaId**
 
-The Id of the parachain running in Rococo we want to migrate. This Id will be used to
-retrieve the following data:
-- `paras.heads(ParaId)` 
-- `paras.currentCodeHash(ParaId)` which at the same time will be used to retrieve the actual code
-for this parachain.
-- `registrar.paras(ParaId)` from this struct the current manager account will be extrancted.
+The Id of the parachain running in Rococo we want to migrate. Avoiding this way runtime modifications.
 
-And will be the Id used to register the new parachain in Paseo. Avoiding innecessary changes in the parachain codebase.
 
-**We will highly appreciate if you could attach the files generated in the preparation. :+1:**
-
-### **Migrating From Block#**
-
-This helps us locating the state that needs to be migrated from Rococo to Paseo.
-Useful information here is:
-- Parachain block# from which the state is going to be migrated.
-- Relay block# corresponding to the finalised Parachain block#.
-
-### **Manager Account**
+### **Parachain Manager Account**
 
 Ideally the same account than in Rococo will be used as a way of streamlining the process.
 Otherwise any account you control in Paseo is fine.
 
-### **Optional Proof of Ownership**
+### **Genesis State**
 
-As a way of proving that the creator of the issue has access to the manager account registered in Rococo, if applicable. This proof could be requested if the reviewers can't identify the user opening the request.
-Note this can be done in various way, for instance, using polkadot.js/apps - https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frococo-rpc.polkadot.io#/signing
+Upload the genesis state generated in the [pre-requisites](#pre-requisites) section.
 
-Another way to generate such proof: use the `sign` subcommand that ships with substrate. A bianry that contains such subcommand is for isntance `staging-node-cli` in [`polkadot-sdk/substrate/bin/node`](https://github.com/paritytech/polkadot-sdk/tree/master/substrate/bin/node).
-Which can be built like this:
-```bash
-$ cargo build --release -p staging-node-cli
-```
-> Bear in mind that the resulting binary is called `substrate-node`
+> __Notice that if you plan to attach these files into a GitHub issue or comment, you might need to append a file formart to the file names, as per GitHub restrictions._
 
-Once the binary with this subcommand is ready the message to sing is `PASEO`. Which can be achieved running:
-```bash
-./substrate-node sign --message PASEO --suri <secret>
-```
-> Note that there are various options of providing the secret, pelase check the output of `sign --help`.
+### **Validation Code**
 
-The output of the execution shoul be something similar to 
-`0xbaa49812c9ddd70bb8514ba3841a25a8117c2c33cedde5229e4e1f058ce24f57281c45afb10c1dc094d2c3438cdc61884a9a814cd34358a41b017e3755734b8a` 
+Upload the genesis wasm generated in the [pre-requisites](#pre-requisites) section.
 
-_(In my tests I have been observing the output including a character `%` at the end of the signature, which is not part of it.)_
+> __Notice that if you plan to attach these files into a GitHub issue or comment, you might need to append a file formart to the file names, as per GitHub restrictions._
 
 ---
 
-Once done you should see that your parachain is being registered and ready to start onboarding.
+Once this is done, Paseo maintainers will start your onboarding.
 
 Be mindful of your "old" parachain's database, you might want to back it up or you might choose to simply purge it. But this could be a good moment to address it.
 
-Now everything should be ready to run the collators again pointing now to the right chain specs.
+Now everything should be ready to run your collators pointing them to the [correct Paseo spec](https://github.com/paseo-network/runtimes/blob/main/chain-specs/paseo.raw.json).
+
+
+---
+## 2. Migrate state and history
+
+This section has been contributed by [@ntn-x2](https://github.com/ntn-x2)!
+
+### Pre-requisites
+
+The parachains has a way to disable relaychain block number checks. KILT has developed a solution in [this pallet](https://github.com/KILTprotocol/kilt-node/tree/f42e7aad9ecec992f196c41e7198b3022b60702b/pallets/pallet-configuration). Other alternative solutions might exist.
+
+### Migration
+
+1. Set the relaychain block number checks to false
+2. Stop all collators
+3. Wait for the latest head to be finalised in the relaychain, make sure it does not change anymore for 1 minute or so
+4. Take note of the parachain head as stored on the relaychain under the given `paraId`
+5. Copy-paste the old chainspec into a new chainspec, changing the relative fields, e.g., `paraId`, `protocolId`, etc.
+6. If a new `id` is used for the new chainspec (recommended), then access the state DB of each collator and fullnode, optionally make a backup of each if needed, and rename the parachain DB, which is typically `under para/chains/<chainspec_id>` to `para/chains/<new_chainspec_id>`. The state under `relay/chains/<relay_chainspec_id>` can most likely be deleted altoghether if the parachain is switching relaychain.
+7. Start all nodes that are NOT collators with the new chainspec, potentially using `--sync warp` for the relaychain component to make syncing faster
+8. If no warnings arise, once the non-collating nodes are up to speed, start and sync also the collators in the same way with the new chainspec.
+9. Onboard the parachain on the new relaychain using the new `paraID`, using the head retrieved at step 4 and the same WASM that the parachain was using. For this check information on [PAS#9](https://github.com/paseo-network/paseo-action-submission/blob/main/pas/PAS-9-Onboard-paras-slots.md)
+10. Verify collators can produce blocks
+11. On the parachain, set raw storage for the `parachainInfo` pallet to the new para ID, if different than before
+12. Re-enable relaychain block number checks, using the reverse of the mechanism used in step 1.
+13. Enjoy!
+
+---
+
+### Resouces
 
 Paseo's raw spec can be found at:
 - [paseo-network/runtimes/chain-specs](https://github.com/paseo-network/runtimes/tree/main/chain-specs)
