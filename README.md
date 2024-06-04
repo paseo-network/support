@@ -18,10 +18,12 @@ To report a bug, request a feature, or seek support:
 
 #### 🧳 Migrate your parachain from Rococo to Paseo
 
-If you are the maintainer of a parachain running on Rococo and you are looking 
+If you are the maintainer of a parachain running on Rococo, or any other relay testnet, and you are looking 
 to keep your parachain running in Paseo, please go ahead and follow the migration guide: 
 
 - [Migrate parachain from Rococo to Paseo](docs/rococo_migration.md)
+
+It showcases two ways of doing the migration. A re-gensis or a migration keeeping state and history.
 
 ### Tagging Issues
 
