@@ -20,7 +20,7 @@ Before initiating the onboarding process, ensure you meet the following requirem
 - **Technical Requirements:** Have a fully operational blockchain capable of connecting as a parachain. This includes having a collator setup ready.
 - **Resource Allocation:** Ensure you have the computational and network resources to run a stable collator node.
 - **Paseo Tokens:** Acquire sufficient PAS tokens for staking if required for becoming a parachain on the Paseo Testnet.
-- **Paseo Tokens:** Acquire sufficient PAS tokens to register your chain's state and code. The faucet is available for everybody to use as means of getting PAS https://faucet.polkadot.io/paseo.
+- **Paseo Tokens:** Acquire sufficient PAS tokens to register your chain's state and code. The faucet is available for everybody to use as means of getting PAS https://faucet.polkadot.io.
 
 If having troubles, please open an issue at our support repo [Paseo Testnet Support Repository](https://github.com/paseo-network/support/issues)
 
