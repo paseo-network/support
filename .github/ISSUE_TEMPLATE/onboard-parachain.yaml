@@ -10,7 +10,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        ## If you want to migrate your running parachain from Rococo please refer to https://github.com/paseo-network/support/docs/rococo_migration.md
+        ## If you want to migrate your running parachain from Rococo please refer to https://github.com/paseo-network/support/blob/main/docs/rococo_migration.md
   - type: input
     id: para_name
     attributes:
