@@ -36,15 +36,20 @@ body:
   - type: textarea
     id: genesis
     attributes:
-      label: Upload your Genesis State - Do not submit a compressed file.
-      placeholder: Drag & drop or upload the genesis file, or provide a link to this file to download
+      label: Upload your Genesis Header - Do not submit a compressed file.
+      placeholder: | 
+        Drag & drop or upload the genesis file, or provide a link to this file to download.
+        This file should reflect the header of the genesis block in Paseo, this is, the first block that will be run on Paseo.
+        The command `<your parachain> export-genesis-head --chain <chain-spec> > genesis-head` may be useful to obtain it.
     validations:
       required: true
   - type: textarea
     id: wasm
     attributes:
       label: Upload your Validation Code (genesis runtime Wasm) - Do not submit a compressed file.
-      placeholder: Drag & drop or upload the Wasm runtime file associated with your genesis
+      placeholder: | 
+        Drag & drop or upload the Wasm runtime file associated with your genesis.
+        The command `<your parachain> export-genesis-wasm --chain <chain-spec> > genesis-wasm` may be useful to obtain it.
     validations:
       required: true
   - type: markdown
